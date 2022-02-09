@@ -17,6 +17,8 @@ class Problema(models.Model):
 
 
 
+
+
 class CodeImage(models.Model):
     image = models.ImageField(upload_to='problem_img')
     problema = models.ForeignKey(Problema, on_delete=models.CASCADE, related_name='images')
