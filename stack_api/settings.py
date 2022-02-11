@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     # myapps
     'main',
     'account',
+    'drf_yasg',
 
 ]
 
@@ -139,7 +140,18 @@ AUTH_USER_MODEL = 'account.CustomUser'
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 2
+    'PAGE_SIZE': 2,
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+
+from datetime import timedelta
+
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=7),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=31),
 }
 
 TWILIO_ACCOUNT_SID = config('TWILIO_ACCOUNT_SID')
